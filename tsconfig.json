@@ -1,16 +1,23 @@
 {
-  "compilerOptions": {
-    "target": "ES2018",
-    "module": "CommonJS",
-    "lib": ["ES2018"],
-    "outDir": "./dist",
-    "rootDir": "./src",
-    "strict": true,
-    "esModuleInterop": true,
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "skipLibCheck": true
-  },
-  "include": ["src/**/*", "src/db.test.ts"],
-  "exclude": ["node_modules"]
-}
+    "compilerOptions": {
+      "target": "ES2020",                           // Define a versão do JavaScript que será gerada
+      "module": "commonjs",                         // Define o sistema de módulos a ser usado
+      "strict": true,                               // Ativa todas as verificações de tipo estritas
+      "esModuleInterop": true,                      // Permite a importação de módulos CommonJS
+      "skipLibCheck": true,                         // Ignora a verificação de tipo de arquivos de declaração (.d.ts)
+      "forceConsistentCasingInFileNames": true,    // Garante que a importação de arquivos seja consistente em relação a maiúsculas e minúsculas
+      "outDir": "./dist",                           // Diretório de saída para os arquivos compilados
+      "rootDir": "./src",                           // Diretório raiz dos arquivos de entrada
+      "baseUrl": "./",                              // Base URL para resolver módulos não relativos
+      "paths": {
+        "*": ["node_modules/*", "src/types/*"]    // Mapeia os caminhos para facilitar a importação
+      }
+    },
+    "include": [
+      "src/**/*"                                    // Inclui todos os arquivos TypeScript na pasta src
+    ],
+    "exclude": [
+      "node_modules",                               // Exclui a pasta node_modules
+      "**/*.spec.ts"                               // Exclui arquivos de teste
+    ]
+  }

@@ -1,29 +1,29 @@
 version: '3.8'
 
 services:
-  api:
+  app:
     build: .
     ports:
       - "3000:3000"
-    environment:
-      - DB_HOST=db
-      - DB_USER=root
-      - DB_PASSWORD=password
-      - DB_NAME=test_db
     depends_on:
       - db
-
+    environment:
+      - DB_HOST=db
+      - DB_PORT=5432
+      - DB_USER=postgres
+      - DB_PASSWORD=1234
+      - DB_NAME=water
 
   db:
-    image: mysql:8.0
+    image: postgres:13
     environment:
-      - MYSQL_ROOT_PASSWORD=password
-      - MYSQL_DATABASE=test_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 1234
+      POSTGRES_DB: water
     ports:
-      - "3306:3306"
+      - "5433:5432"  # Mapeando a porta 5432 do contêiner para a porta 5433 no host
     volumes:
-      - mysql-data:/var/lib/mysql
-      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+      - pgdata:/var/lib/postgresql/data
 
 volumes:
-  mysql-data:
+  pgdata:

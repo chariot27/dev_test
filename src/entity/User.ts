@@ -1,3 +1,13 @@
-import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
+export class User {
+    id: number;
+    firstname: string;
+    lastname: string;
+    email: string;
 
-//TODO Crie a entidade de User
+    constructor(id: number, firstname: string, lastname: string, email: string) {
+        this.id = id;
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.email = email;
+    }
+}
